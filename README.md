@@ -1,4 +1,4 @@
-# Sahra Ali
+# This is my Lab 1 readme
 
 
 
@@ -8,12 +8,12 @@ To make it easy for you to get started with GitLab, here's a list of recommended
 
 Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
 
-## Add your files
+## Links that I like
 
-- [ ] [Create](https://gitlab.com/-/experiment/new_project_readme_content:2dc48676b7977c5f8ee6337973f020e6?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://gitlab.com/-/experiment/new_project_readme_content:2dc48676b7977c5f8ee6337973f020e6?https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
+- [ ] [Python crash course](file:///C:/Users/ashaa/Downloads/Python%20Crash%20Course.pdf) or [software]file:///C:/Users/ashaa/Downloads/DevOps_%20A%20Software%20Architect's%20-%20Len%20Bass-4.pdf files
 - [ ] [Add files using the command line](https://gitlab.com/-/experiment/new_project_readme_content:2dc48676b7977c5f8ee6337973f020e6?https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
 
-```
+
 cd existing_repo
 git remote add origin https://gitlab.com/jtedgar/sahra-ali.git
 git branch -M main
