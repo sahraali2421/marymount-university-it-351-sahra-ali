@@ -1,7 +1,0 @@
-my-job:
-image: centos
-stage: test
-script:
--  echo "Hello world, Sahra's first Gitlab runner at work!
-"tags:
--  it-351-runner
