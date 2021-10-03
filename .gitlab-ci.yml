@@ -3,13 +3,12 @@ stages:
   -  plan
   -  apply
   -  destroy
-  .terraform_init: &terraform_init |-
-    terraform init -backend-config="bucket=sahra-tfstate" -backend-
-  config="region=us-east-1" -backend-config="key=terraform.tfstate"
-  tf-val:
+.terraform_init: &terraform_init |-
+    terraform init -backend-config="bucket=sahra-tfstate" -backend-config="region=us-east-1" -backend-config="key=terraform.tfstate"
+tf-val:
    image:
-    name: hashicorp/terraform
-    entrypoint: [""]
+      name: hashicorp/terraform
+      entrypoint: [""]
   stage: validate
   before_script:
     -  *terraform_init
