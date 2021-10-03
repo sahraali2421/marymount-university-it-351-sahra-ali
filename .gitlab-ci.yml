@@ -3,12 +3,12 @@ stages:
   -  plan
   -  apply
   -  destroy
-.terraform_init: &terraform_init |-
+  .terraform_init: &terraform_init |-
     terraform init -backend-config="bucket=sahra-tfstate" -backend-config="region=us-east-1" -backend-config="key=terraform.tfstate"
 tf-val:
-   image:
-      name: hashicorp/terraform
-      entrypoint: [""]
+  image:
+    name: hashicorp/terraform
+    entrypoint: [""]
   stage: validate
   before_script:
     -  *terraform_init
@@ -28,7 +28,7 @@ script:
 artifacts:
   name: tf-plan
   paths:
-  -  tfplan.plan
+    -  tfplan.plan
 needs:
   -  job: tf-val
 tags:
@@ -54,7 +54,8 @@ tf-destroy:
     name: hashicorp/terraform
     entrypoint: [""]
   stage: destroy
-  before_script:-  *terraform_init
+  before_script:
+    -  *terraform_init
   script:
     -  terraform destroy -auto-approve
   needs:
