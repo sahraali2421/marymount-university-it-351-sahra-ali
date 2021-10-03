@@ -3,7 +3,8 @@ resource "aws_instance" "my_instance" {
     instance_type = "t2.micro"
     root_block_device {
         volume_size = 8
-        }
-        tags = {N
-        ame = "SahraFirstTFInstance"}
-        }
+    }
+    tags = {
+        Name = "SahraFirstTFInstance"
+    }
+}
