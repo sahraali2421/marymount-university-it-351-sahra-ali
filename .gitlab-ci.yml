@@ -19,7 +19,6 @@ tf-val:
   tags:
     - it-351-runner
 
-
 tf-plan:
   image:
     name: hashicorp/terraform
@@ -37,6 +36,7 @@ needs:
   -  job: tf-val
 tags:
   -  it-351-runner
+  
 tf-apply:
   image:
     name: hashicorp/terraform
