@@ -13,27 +13,27 @@ tf-val:
     entrypoint: [""]
   stage: validate
   before_script:
-    -  *terraform_init
+    - *terraform_init
   script:
-   -  terraform validate
+    - terraform validate
   tags:
-   -  it-351-runner
+    - it-351-runner
 
   tf-plan:
-  image:
-    name: hashicorp/terraform
-    entrypoint: [""]
-  stage: plan
-  before_script:
-    -  *terraform_init
-  script:
-    -  terraform plan -out=tfplan.plan
-  artifacts:
-    name: tf-plan
-    paths:
-      -  tfplan.plan
-  needs:
-    - job: tf-val
+    image:
+     name: hashicorp/terraform
+     entrypoint: [""]
+    stage: plan
+    before_script:
+      - *terraform_init
+    script:
+      - terraform plan -out=tfplan.plan
+    artifacts:
+      name: tf-plan
+      paths:
+        - tfplan.plan
+    needs:
+      - job: tf-val
   tags:
     -  it-351-runner
 
