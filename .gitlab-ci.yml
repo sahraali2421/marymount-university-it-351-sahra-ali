@@ -1,14 +1,14 @@
 stages:
--  validate
--  plan
--  apply
--  destroy
+  - validate
+  - plan
+  - apply
+  - destroy
 
 .terraform_init: &terraform_init |-
   terraform init -backend-config="bucket=sahra-tfstate" -backend-config="region=us-east-1" -backend-config="key=terraform.tfstate"
-  
+
 tf-val:
-  image:
+  image: 
     name: hashicorp/terraform
     entrypoint: [""]
   stage: validate
@@ -16,46 +16,55 @@ tf-val:
     - *terraform_init
   script:
     - terraform validate
-   tags:
+  tags:
     - it-351-runner
 
 tf-plan:
-  image:
+  image: 
     name: hashicorp/terraform
-  -  job: tf-val
-tags:
-  -  it-351-runner
-  
-tf-apply:
-  image:
-    name: hashicorp/terraform
-
     entrypoint: [""]
-stage: apply
-before_script:
-  -  *terraform_init
-script:
-  -  terraform apply -auto-approve tfplan.plan
-needs:
-  -  job: tf-plan
-rules:
-  -  when: manual
-tags:
-  -  it-351-runner
+  stage: plan
+  before_script:
+    - *terraform_init
+  script:
+    - terraform plan -out=tfplan.plan
+  artifacts:
+    name: tf-plan
+    paths:
+      - tfplan.plan
+  needs:
+    - job: tf-val
+  tags:
+    - it-351-runner
+
+tf-apply:
+  image: 
+    name: hashicorp/terraform
+    entrypoint: [""]
+  stage: apply
+  before_script:
+    - *terraform_init
+  script:
+    - terraform apply -auto-approve tfplan.plan
+  needs:
+    - job: tf-plan
+  rules:
+    - when: manual
+  tags:
+    - it-351-runner
 
 tf-destroy:
-  image:
+  image: 
     name: hashicorp/terraform
     entrypoint: [""]
-stage: destroy
-before_script:
-  -  *terraform_init
-script:
-  -  terraform destroy -auto-approve
-needs:
-  -  job: tf-plan
-rules:
-  -  when: manual
-tags:
-  -  it-351-runner
-
+  stage: destroy
+  before_script:
+    - *terraform_init
+  script:
+    - terraform destroy -auto-approve
+  needs:
+    - job: tf-plan
+  rules:
+    - when: manual
+  tags:
+    - it-351-runner
