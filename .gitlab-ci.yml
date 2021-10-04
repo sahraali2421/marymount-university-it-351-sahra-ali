@@ -16,23 +16,12 @@ tf-val:
     - *terraform_init
   script:
     - terraform validate
-  tags:
+   tags:
     - it-351-runner
 
 tf-plan:
   image:
     name: hashicorp/terraform
-    entrypoint: [""]
-stage: plan
-before_script:
-  -  *terraform_init
-script:
-  -  terraform plan -out=tfplan.plan
-artifacts:
-  name: tf-plan
-  paths:
-    -  tfplan.plan
-needs:
   -  job: tf-val
 tags:
   -  it-351-runner
@@ -40,6 +29,7 @@ tags:
 tf-apply:
   image:
     name: hashicorp/terraform
+
     entrypoint: [""]
 stage: apply
 before_script:
