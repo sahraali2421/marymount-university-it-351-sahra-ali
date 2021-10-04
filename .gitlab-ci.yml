@@ -23,7 +23,7 @@ tf-val:
    image:
      name: hashicorp/terraform
      entrypoint: [""]
-   stage: plan
+  stage: plan
 
     before_script:
       - *terraform_init
