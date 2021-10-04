@@ -15,12 +15,12 @@ tf-val:
   before_script:
     - *terraform_init
   script:
-    - terraform validate
+   - terraform validate
   tags:
     - it-351-runner
 
   tf-plan:
-    image:
+       image:
      name: hashicorp/terraform
      entrypoint: [""]
     stage: plan
