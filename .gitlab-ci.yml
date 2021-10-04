@@ -5,7 +5,7 @@ stages:
   - destroy
 
 .terraform_init: &terraform_init |-
-  terraform init -backend-config="bucket=sahratfstate" -backend-config="region=us-east-1" -backend-config="key=terraform.tfstate"
+  terraform init -backend-config="bucket=sahra-tfstate" -backend-config="region=us-east-1" -backend-config="key=terraform.tfstate"
 
 tf-val:
   image: 
