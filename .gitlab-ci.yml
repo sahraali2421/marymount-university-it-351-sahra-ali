@@ -2,6 +2,7 @@ stages:
   - validate
   - plan
   - apply
+  - config
   - destroy
 
 .terraform_init: &terraform_init |-
@@ -46,12 +47,33 @@ tf-apply:
     - *terraform_init
   script:
     - terraform apply -auto-approve tfplan.plan
+    - terraform output instance_ip >> ansible-hosts.yml
   needs:
     - job: tf-plan
   rules:
     - when: manual
+  artifacts:
+    name: ansible-hosts
+    paths: 
+      - ansible-hosts.yml
   tags:
     - it-351-runner
+
+ansible:
+  image:
+    name: mullnerz/ansible-playbook
+    entrypoint:  [""]
+  stage: configure
+  before_script:
+    - chomd 0600 gitlab-runner.pem
+  script:
+    - ansible-playbook -i ansible.host.yml playbook --key-file gitlab-runner.pem
+  needs:
+    - job: tf-apply
+  tags:
+    - it-351-runner
+
+
 
 tf-destroy:
   image: 
