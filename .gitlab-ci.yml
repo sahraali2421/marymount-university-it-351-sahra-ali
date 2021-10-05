@@ -67,7 +67,7 @@ ansible:
   before_script:
     - chmod 0600 gitlab-runner.pem
   script:
-    - ansible-playbook -i ansible-host.yml playbook.yml --key-file gitlab-runner.pem
+    - ansible-playbook -i ansible-hosts.yml playbook.yml --key-file gitlab-runner.pem
   needs:
     - job: tf-apply
   tags:
