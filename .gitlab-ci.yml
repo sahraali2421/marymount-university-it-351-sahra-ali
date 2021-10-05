@@ -2,7 +2,7 @@ stages:
   - validate
   - plan
   - apply
-  - config
+  - configure
   - destroy
 
 .terraform_init: &terraform_init |-
