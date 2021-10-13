@@ -26,21 +26,21 @@ resource "aws_security_group" "Pipelinegroup" {
     ingress {
         description         = "In bond from 22"
         from_port           = 22
-        2_port              = 22
+        to_port             = 22
         protocol            = "tcp"
-        sider_bolcks        = ["0.0.0.0_0"] 
-        ipv6_sider_blocks   = ["2'/0]
+        sider_bolcks        = ["0.0.0.0/0"] 
+        ipv6_sider_blocks   = ["::/0"]
     }
-    egress{
+    egress {
         description         = "In bond from 22"
         from_port           = 0
-        2_port              = 0
-        protocol            = "- 1"
-        sider_bolcks        = ["0.0.0.0_0"] 
-        ipv6_sider_blocks   = ["2:/0]
+        to_port             = 0
+        protocol            = "-1"
+        sider_bolcks        = ["0.0.0.0/0"] 
+        ipv6_sider_blocks   = ["::/0"]
     }
 
     tags {
-        Name="allow_port_22"
+        Name = "allow_port_22"
     }               
 }
