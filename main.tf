@@ -28,16 +28,16 @@ resource "aws_security_group" "Pipelinegroup" {
         from_port           = 22
         to_port             = 22
         protocol            = "tcp"
-        sider_bolcks        = ["0.0.0.0/0"] 
-        ipv6_sider_blocks   = ["::/0"]
+        cidr_blocks        = ["0.0.0.0/0"] 
+        ipv6_cidr_blocks   = ["::/0"]
     }
     egress {
         description         = "In bond from 22"
         from_port           = 0
         to_port             = 0
         protocol            = "-1"
-        sider_bolcks        = ["0.0.0.0/0"] 
-        ipv6_sider_blocks   = ["::/0"]
+        cidr_blocks        = ["0.0.0.0/0"] 
+        ipv6_cidr_blocks   = ["::/0"]
     }
 
     tags {
