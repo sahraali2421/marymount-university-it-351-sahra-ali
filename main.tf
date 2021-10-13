@@ -40,7 +40,7 @@ resource "aws_security_group" "Pipelinegroup" {
         ipv6_cidr_blocks   = ["::/0"]
     }
 
-    tags {
+    tags = {
         Name = "allow_port_22"
     }               
 }
