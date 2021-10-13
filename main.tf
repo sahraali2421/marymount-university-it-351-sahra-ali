@@ -20,7 +20,7 @@ output "instance_ip"{
 
 resource "aws_security_group" "Pipelinegroup" {    
     name            = "Pipelinegroup" 
-    discription     = "Allow port 22"
+    description     = "Allow port 22"
     vpc_id          = "vpc-de79d7a3" 
 
     ingress {
