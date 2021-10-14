@@ -65,9 +65,9 @@ ansible:
     entrypoint:  [""]
   stage: configure
   before_script:
-    - chmod 0600 pipeline-runner.pem
+    - chmod 0600 gitlab-runner.pem
   script:
-    - ansible-playbook -i ansible-hosts.yml playbook.yml --key-file pipeline-runner.pem
+    - ansible-playbook -i ansible-hosts.yml playbook.yml --key-file gitlab-runner.pem
   needs:
     - job: tf-apply
   tags:
