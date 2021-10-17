@@ -1,7 +1,7 @@
 resource "aws_instance" "my_instance" {
     ami           = "ami-087c17d1fe0178315"
     instance_type = "t2.micro"
-    key_name = "pipeline-runner"
+    key_name = "gitlab-runner"
     security_groups = ["${aws_security_group.Pipelinegroup.name}"]
 
     root_block_device {
