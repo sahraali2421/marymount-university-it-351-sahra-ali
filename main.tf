@@ -2,7 +2,7 @@ resource "aws_instance" "my_instance" {
     ami           = " ami-02e136e904f3da870"
     instance_type = "t2.micro"
     key_name = "newkeypair.pem"
-    security_groups = ["${aws_security_group.launch-wizard-19.name}"]
+    security_groups = ["${aws_security_group.pipelinegroup.name}"]
 
     root_block_device {
         volume_size = 10
@@ -18,8 +18,8 @@ output "instance_ip"{
     value = aws_instance.my_instance.public_ip
 }
 
-resource "aws_security_group" "launch-wizard-19" {    
-    name            = "launch-wizard-19" 
+resource "aws_security_group" "pipelinegroup" {    
+    name            = "pipelinegroup" 
     description     = "Allow port 22"
     vpc_id          = "vpc-de79d7a3" 
 
