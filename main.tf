@@ -1,8 +1,8 @@
 resource "aws_instance" "my_instance" {
-    ami           = "ami-087c17d1fe0178315"
+    ami           = " ami-02e136e904f3da870"
     instance_type = "t2.micro"
-    key_name = "gitlab-runner"
-    security_groups = ["${aws_security_group.launch-wizard-15.name}"]
+    key_name = "newkeypair.pem"
+    security_groups = ["${aws_security_group.launch-wizard-19.name}"]
 
     root_block_device {
         volume_size = 10
@@ -10,7 +10,7 @@ resource "aws_instance" "my_instance" {
     
     
     tags = {
-        Name = "gitlab-runner"
+        Name = "project"
     }
 }
 
@@ -18,10 +18,10 @@ output "instance_ip"{
     value = aws_instance.my_instance.public_ip
 }
 
-resource "aws_security_group" "launch-wizard-15" {    
-    name            = "launch-wizard-15" 
+resource "aws_security_group" "launch-wizard-19" {    
+    name            = "launch-wizard-19" 
     description     = "Allow port 22"
-    vpc_id          = "vpc-de79d7a3" 
+    vpc_id          = "vpc-de79d7a3 " 
 
     ingress {
         description         = "In bond from 22"
