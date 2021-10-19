@@ -18,7 +18,7 @@ output "instance_ip"{
     value = aws_instance.my_instance.public_ip
 }
 
-resource "aws_security_group" "launch-wizard-19" {    
+resource "aws_security_group" "gitlab-runner" {    
     name            = "launch-wizard-19" 
     description     = "Allow port 22"
     vpc_id          = "vpc-de79d7a3 " 
