@@ -79,6 +79,7 @@ ansible:
     - it-351-runner
 
 owasp-dc:
+  allow_failure: true
   stage: "Dependency Check"
   image:
     name: owasp/dependency-check
