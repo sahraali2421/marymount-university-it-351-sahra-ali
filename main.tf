@@ -27,9 +27,7 @@ resource "aws_instance" "sonarqube_instance" {
   }
 }
 
-output "instance_ip"{
-    value = aws_instance.my_instance.public_ip
-}
+
 
 resource "aws_security_group" "pipelinegroup" {    
     name            = "pipelinegroup" 
@@ -57,3 +55,10 @@ resource "aws_security_group" "pipelinegroup" {
         Name = "allow_port_22"
     }               
 }
+output "instance_ip"{
+    value = aws_instance.my_instance.public_ip
+}
+output "sonarqube_ip"{
+    value = aws_instance.sonarqube_instance.public_ip
+}
+
