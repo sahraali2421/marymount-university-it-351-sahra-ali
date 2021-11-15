@@ -85,11 +85,11 @@ owasp-dc:
     name: owasp/dependency-check
     entrypoint: [""]
   script:
-    - /usr/share/dependency-check/bin/dependency-check.sh --project Test --out . --scan . --enableExperimental --failOnCVSS 7
+    - /usr/share/dependency-check/bin/dependency-check.sh --project Test --out . --scan . --enableExperimental --failOnCVSS 7 -f XML
   artifacts:
     when: always
     paths:
-      - dependency-check-report.html
+      - dependency-check-report.xml
     expire_in: 1 week
   tags:
     - it-351-runner
@@ -111,7 +111,7 @@ sonarqube:
     paths:
       - .sonar/cache
   script:
-    - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.host.url=http://${SONARQUBE_IP}:9000
+    - sonar-scanner -Dsonar.qualitygate.wait=true -Dsonar.host.url=http://${SONARQUBE_IP}:9000 -Dsonar.dependencyCheck.reportPath=dependency-check-report.xml
   only:
     - main
   tags:
