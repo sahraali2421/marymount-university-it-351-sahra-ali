@@ -5,7 +5,7 @@ stages:
   - configure
   - "Dependency Check"
   - analyze
-  - "Continous Compliance"
+  - "Continuous Compliance"
   - destroy
 
 .terraform_init: &terraform_init |-
