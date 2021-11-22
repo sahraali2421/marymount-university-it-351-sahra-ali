@@ -24,5 +24,14 @@ control "check-instance-ami" do
       end
   end
 
+control "check-lab-7-tags" do
+    impact 0.3
+    title "Check instance Tags"
+    desc "Check for the soon-to-be-required Lab 7 tag on our EC2 instance"
+  
+    describe aws_ec2_instance(name: 'SahrasFirstInstance') do
+        its('tags') { should include(key: 'Lab7', value: 'completed') }
+      end
+  end
 
 
