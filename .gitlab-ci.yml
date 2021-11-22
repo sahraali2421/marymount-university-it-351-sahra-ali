@@ -118,6 +118,19 @@ sonarqube:
   tags:
     - it-351-runner
 
+ chef-inspec:
+  stage: "Continuous Compliance"
+  image:
+    name: chef/inspec
+    entrypoint: [""]
+  script:
+    - inspec detect -t aws:// --chef-license accept
+    - inspec vendor lab-7-profile
+    - inspec exec lab-7-profile -t aws://
+  tags:
+    - it-351-runner
+    
+
 tf-destroy:
   image: 
     name: hashicorp/terraform
