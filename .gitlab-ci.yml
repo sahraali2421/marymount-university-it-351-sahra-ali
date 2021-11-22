@@ -118,7 +118,7 @@ sonarqube:
   tags:
     - it-351-runner
 
- chef-inspec:
+chef-inspec:
   stage: "Continuous Compliance"
   image:
     name: chef/inspec
