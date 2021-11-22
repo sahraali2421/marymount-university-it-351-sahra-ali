@@ -9,7 +9,7 @@ resource "aws_instance" "my_instance" {
     
     tags = {
         Name = "SahrasFirstInstance",
-        Lab7 = "Completed"
+        Lab7 = "completed"
     }
 }
 
