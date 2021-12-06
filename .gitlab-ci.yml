@@ -12,19 +12,26 @@ stages:
 .terraform_init: &terraform_init |-
   terraform init -backend-config="bucket=sahra-tf-state" -backend-config="region=us-east-1" -backend-config="key=terraform.tfstate"
 
-
 trivy:
   stage: "Image Scanning"
   image:
     name: aquasec/trivy:latest
     entrypoint: [""]
   script:
-    - trivy image mullnerz/ansible-playbook
-    - trivy image hashicorp/terraform
-    - trivy image owasp/dependency-check
-    - trivy image sonarsource/sonar-scanner-cli:latest
-    - trivy image chef/inspec
-
+    - trivy -f json -o results-ansible.json image mullnerz/ansible-playbook
+    - trivy -f json -o results-terrafrom.json image hashicorp/terraform
+    - trivy -f json -o results-owasp.json image owasp/dependency-check
+    - trivy -f json -o results-sonar.json image sonarsource/sonar-scanner-cli:latest
+    - trivy -f json -o results-chef.json image chef/inspec
+ artifacts:
+   when: always #If the job fails the artifacts will always stay the same & still will be there. 
+    name: trivy
+    paths:
+      - results-ansible.json
+      - results-terrafrom.json
+      - results-owasp.json
+      - results-sonar.json
+      - results-chef.json
   tags:
     - it-351-runner
 
