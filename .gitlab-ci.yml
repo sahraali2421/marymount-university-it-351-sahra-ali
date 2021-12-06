@@ -26,7 +26,7 @@ trivy:
  artifacts:
    when: always 
    name: trivy
-    paths:
+   paths:
       - results-terraform.json
       - results-ansible.json
       - results-owasp.json
