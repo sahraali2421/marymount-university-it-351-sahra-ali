@@ -18,17 +18,17 @@ trivy:
     name: aquasec/trivy:latest
     entrypoint: [""]
   script:
+    - trivy -f json -o results-terraform.json image hashicorp/terraform
     - trivy -f json -o results-ansible.json image mullnerz/ansible-playbook
-    - trivy -f json -o results-terrafrom.json image hashicorp/terraform
     - trivy -f json -o results-owasp.json image owasp/dependency-check
     - trivy -f json -o results-sonar.json image sonarsource/sonar-scanner-cli:latest
-    - trivy -f json -o results-chef.json image chef/inspec
+    - trivy -f json -o results-chef.json image chef/inspec   
  artifacts:
-   when: always 
+   when:  always 
     name: trivy
     paths:
+      - results-terraform.json
       - results-ansible.json
-      - results-terrafrom.json
       - results-owasp.json
       - results-sonar.json
       - results-chef.json
