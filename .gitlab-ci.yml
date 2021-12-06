@@ -23,7 +23,7 @@ trivy:
     - trivy -f json -o results-owasp.json image owasp/dependency-check
     - trivy -f json -o results-sonar.json image sonarsource/sonar-scanner-cli:latest
     - trivy -f json -o results-chef.json image chef/inspec   
- artifacts:
+  artifacts:
    when: always 
    name: trivy
    paths:
