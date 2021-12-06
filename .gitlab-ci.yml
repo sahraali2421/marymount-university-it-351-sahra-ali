@@ -27,11 +27,11 @@ trivy:
    when: always 
    name: trivy
    paths:
-      - results-terraform.json
-      - results-ansible.json
-      - results-owasp.json
-      - results-sonar.json
-      - results-chef.json
+     - results-terraform.json
+     - results-ansible.json
+     - results-owasp.json
+     - results-sonar.json
+     - results-chef.json
   tags:
     - it-351-runner
 
