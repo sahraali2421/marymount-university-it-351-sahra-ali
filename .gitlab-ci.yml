@@ -24,8 +24,8 @@ trivy:
     - trivy -f json -o results-sonar.json image sonarsource/sonar-scanner-cli:latest
     - trivy -f json -o results-chef.json image chef/inspec   
  artifacts:
-   when:  always 
-    name: trivy
+   when: always 
+   name: trivy
     paths:
       - results-terraform.json
       - results-ansible.json
@@ -36,7 +36,7 @@ trivy:
     - it-351-runner
 
 tf-val:
-   when: manual
+  when: manual
   image: 
     name: hashicorp/terraform
     entrypoint: [""]
