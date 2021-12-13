@@ -4,7 +4,7 @@ stages:
   - plan
   - apply
   - configure
-  - "Dependency Check"
+  - owasp
   - analyze
   - "Continuous Compliance"
   - destroy
@@ -17,6 +17,7 @@ trivy:
   image:
     name: aquasec/trivy:latest
     entrypoint: [""]
+
   script:
     - trivy  image -f json -o results-terraform.json hashicorp/terraform
     - trivy  image -f json -o results-ansible.json mullnerz/ansible-playbook
@@ -106,7 +107,7 @@ ansible:
 
 owasp-dc:
   allow_failure: true
-  stage: "Dependency Check"
+  stage: owsap
   image:
     name: owasp/dependency-check
     entrypoint: [""]
@@ -119,6 +120,17 @@ owasp-dc:
     expire_in: 1 week
   tags:
     - it-351-runner
+
+owasp-zap:
+  stage: owasp
+  image:
+    name: owasp/zap2docker-stable
+    entrypoint: [""]
+  script:
+    - zap-full-scan.py -t https://marymount.edu
+tags:
+  - it-351-runner
+
 
 sonarqube:
   allow_failure: true
