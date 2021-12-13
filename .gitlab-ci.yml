@@ -107,12 +107,12 @@ ansible:
 
 owasp-dc:
   allow_failure: true
-  stage: owsap
+  stage: owasp
   image:
     name: owasp/dependency-check
     entrypoint: [""]
   script:
-    - /usr/share/dependency-check/bin/dependency-check.sh --project Test --out . --scan . --enableExperimental --failOnCVSS 7 -f XML
+    - /usr/share/dependency-check/bin/dependency-check.sh --project Test --out . --scan . --enableExperimental . --failOnCVSS 7 -f XML
   artifacts:
     when: always
     paths:
