@@ -129,7 +129,7 @@ owasp-zap:
   script:
     - zap-full-scan.py -t https://marymount.edu
   tags:
-  - it-351-runner
+    - it-351-runner
 
 
 sonarqube:
