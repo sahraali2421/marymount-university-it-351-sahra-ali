@@ -127,7 +127,7 @@ owasp-zap:
     name: owasp/zap2docker-stable
     entrypoint: [""]
   script:
-    - zap-full-scan.py -t https://marymount.edu
+    - zap-full-scan.py -t https://skiposaur.us
   tags:
     - it-351-runner
 
